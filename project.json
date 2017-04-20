@@ -1,18 +1,18 @@
 {
   "dependencies": {
     "Microsoft.NETCore.App": {
-      "version": "1.0.0",
+      "version": "1.1",
       "type": "platform"
     },
-    "Microsoft.AspNetCore.Mvc": "1.0.0",
-    "Microsoft.AspNetCore.StaticFiles": "1.0.0",
-    "Microsoft.AspNetCore.Session": "1.0.0",
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
-    "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-    "Microsoft.Extensions.Logging.Console": "1.0.0",
-    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "Microsoft.AspNetCore.Mvc": "1.1.1",
+    "Microsoft.AspNetCore.StaticFiles": "1.1.1",
+    "Microsoft.AspNetCore.Session": "1.1.1",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.1.1",
+    "Microsoft.AspNetCore.Diagnostics": "1.1.1",
+    "Microsoft.Extensions.Logging.Console": "1.1.1",
+    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.1",
     "MySql.Data.EntityFrameworkCore": "7.0.7-M61",
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0"
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.1"
   },
 
   "frameworks": {
@@ -24,7 +24,7 @@
     "preserveCompilationContext": true,
     "debugType": "portable"
   },
-  
+
   "publishOptions": {
       "include": [
           "Content",
