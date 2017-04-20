@@ -23,5 +23,14 @@
     "emitEntryPoint": true,
     "preserveCompilationContext": true,
     "debugType": "portable"
+  },
+  
+  "publishOptions": {
+      "include": [
+          "Content",
+          "Views",
+          "web.config",
+          "appsettings.json"
+      ]
   }
 }
