@@ -1,0 +1,55 @@
+@using Ecommerce.Models
+@model Ecommerce.Models.Order
+<!--<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"     </script>-->
+<script src="~/js/order.js" asp-append-version="true"></script>
+<hr>
+<h1>Welcome to order management </h1>
+<div class="new">
+<h3>Add a new order</h3>
+ <form asp-controller="Order" asp-action="NewOrder" method="post">
+        <label>Customer:</label><br>
+        <select asp-for="CustomerId" >
+            @if(ViewBag.customers!=null)
+            {
+                foreach(Customer customer in @ViewBag.customers)
+                {
+                    <option value="@customer.CustomerId">@customer.Name</option>
+                }
+            }
+        </select><br>
+        <label>Products:</label><br>
+        <select id="plist" asp-for="ProductId" >
+            @if(ViewBag.products!=null)
+            {
+                foreach(Product product in @ViewBag.products)
+                {
+                    <option value=@product.ProductId>@product.Name</option>
+                }
+            }
+        </select><br>
+        <label>Quantity:</label>   <br>
+        <select id="quantity" asp-for="Quantity"></select>
+        <p class="error">@ViewData["error"]</p>
+        <button type="submit">Create new order</button>
+    </form><br><br>
+</div>
+<div class="list-table">
+<table>
+    <tr>
+        <th>Customer Name</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Created Date</th>
+    </tr>
+    @foreach(Order order in @ViewBag.orders)
+    {
+        <tr>
+            <td>@order.Customer.Name</td>
+            <td>@order.Product.Name</td>
+            <td>@order.Quantity</td>
+            @{string date=$"{@order.CreatedAt:MMMM dd yyyy hh:mm}";}
+            <td>@date</td>
+        </tr>
+    }
+</table>
+</div>
