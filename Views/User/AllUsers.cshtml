@@ -1,0 +1,26 @@
+@using Network.Models
+<div id="header">
+<a href="/profile">My Profile</a>&nbsp&nbsp&nbsp
+<a href="/logout">Log Out</a> &nbsp&nbsp&nbsp        
+</div>
+<hr>
+<h1>Users you could connect with</h1>
+<table>
+    <tr>
+        <th>User Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach(User user in @ViewBag.users)
+    {
+        <tr>
+                @{string durl=$"/user/{user.UserId}";}
+                <td>
+                    <a href=@durl>@user.FirstName &nbsp @user.LastName</a>
+                </td>
+            <td>
+                @{string url=$"/connect/new/{user.UserId}";}
+                <a href=@url>Connect</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,71 @@
+@using Network.Models
+@model Network.Models.ModelBundle
+<div id="header">
+<a href="/allusers">All Users</a>  &nbsp&nbsp&nbsp
+<a href="/logout">Log Out</a>  &nbsp&nbsp&nbsp       
+</div>
+<hr>
+<h1>Hi &nbsp @Model.user.FirstName &nbsp @Model.user.LastName</h1>
+<h3>Here is your profile information</h3></abbr>
+<p>Email:@Model.user.Email</p>
+<p>@Model.user.Description</p>
+<p>Registerd at:@Model.user.CreatedAt</p>
+<hr>
+<h2> Your friends</h2>
+<table>
+    <tr>
+        <th>FriendId</th>
+        <th>Friend Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach(Connection c in @Model.connections){
+
+        if(c.SelfId==@Model.user.UserId)
+        {
+            <tr>
+                <td>@c.Friend.UserId</td>
+                @{string durl=$"/user/{c.Friend.UserId}";}
+                <td>
+                    <a href=@durl>@c.Friend.FirstName &nbsp @c.Friend.LastName</a>
+                </td>
+                @{string url=$"/connect/delete/{c.ConnectionId}";}
+                <td> <a href= @url >Remove</a> </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>@c.SelfId</td>
+                @{string durl=$"/user/{@c.SelfId}";}
+                <td>
+                    <a href=@durl>@c.Self.FirstName &nbsp @c.Self.LastName</a>
+                </td>
+                @{string url=$"/connect/delete/{c.ConnectionId}";}
+                <td> <a href=@url>Remove</a> </td>
+            </tr>
+        }
+    }
+</table>
+<br><br>
+<h2>Your invitation</h2>
+<h4>The following people asked you to his/her network</h4>
+<table>
+    <tr>
+        <th>User Name</th>
+        <th>Action</th>
+    </tr>
+    @foreach(Invitation i in @Model.invitations)
+    {
+        <tr>
+            <td>@i.Sender.FirstName &nbsp @i.Sender.LastName</td>
+            <td>
+                @{
+                    string accepturl=$"/connect/accept/{i.InvitationId}";
+                    string ignoreurl=$"/connect/ignore/{i.InvitationId}";
+                }
+                <a href=@accepturl>Accept Invitation</a> &nbsp
+                <a href="@ignoreurl">Ignore</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,13 @@
+@using  Network.Models
+@model Network.Models.User
+<div id="header">
+<a href="/profile">My Profile</a>&nbsp&nbsp&nbsp
+<a href="/logout">Log Out</a>&nbsp&nbsp&nbsp
+</div> 
+<hr>
+<h1>@Model.FirstName &nbsp @Model.LastName</h1>
+@{string date=$"{@Model.CreatedAt:MMMM dd yyyy}";}
+<h3>Registed at: &nbsp @date</h3>
+<h3>UserId: &nbsp @Model.UserId</h3>
+<h3>Description: &nbsp @Model.Description</h3>
+
